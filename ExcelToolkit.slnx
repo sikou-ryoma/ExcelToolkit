@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../ExcelController/ExcelController.csproj" Id="3f07c35a-544d-4dbc-9b79-68b7927e058d" />
   <Project Path="ExcelToolkit.csproj" />
 </Solution>
