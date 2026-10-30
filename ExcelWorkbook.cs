@@ -73,4 +73,43 @@ public sealed class ExcelWorkbook : IDisposable
     {
         Close();
     }
+
+    public ExcelWorksheet GetWorksheet(string name)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(name);
+
+        Excel.Sheets? worksheets = null;
+        Excel.Worksheet? worksheet = null;
+
+        try
+        {
+            worksheets = Instance.Worksheets;
+            worksheet = (Excel.Worksheet)worksheets[name];
+
+            return new ExcelWorksheet(worksheet);
+        }
+        catch
+        {
+            if (worksheet is not null)
+            {
+                Marshal.FinalReleaseComObject(worksheet);
+            }
+
+            throw;
+        }
+        finally
+        {
+            if (worksheets is not null)
+            {
+                Marshal.FinalReleaseComObject(worksheets);
+            }
+        }
+    }
+
+    public void RunMacro(string macroName)
+    {
+        ObjectDisposedException.ThrowIf(_disposed, this);
+
+        _application.RunMacro(macroName);
+    }
 }

@@ -76,4 +76,11 @@ public sealed class ExcelApplication : IDisposable
             _disposed = true;
         }
     }
+    
+    public void RunMacro(string macroName)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(macroName);
+
+        Instance.Run(macroName);
+    }
 }
