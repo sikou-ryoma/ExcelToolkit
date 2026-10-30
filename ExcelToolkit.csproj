@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Office.Interop.Excel" Version="16.0.18925.20022" />
-    <PackageReference Include="MicrosoftOfficeInterop" Version="15.0.4420.1017" />
+    <PackageReference Include="ExcelDna.Interop" Version="16.0.0" />
   </ItemGroup>
 
 </Project>
